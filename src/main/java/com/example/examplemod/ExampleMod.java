@@ -1,6 +1,7 @@
 package com.example.examplemod;
 
 import com.example.examplemod.mc_02_myblock.MyBlock;
+import com.example.examplemod.mc_031_fortuneblock.BlockFortune;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.init.Blocks;
@@ -22,11 +23,17 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
             //= new クラス名
             public static Block blockMyBlock = new MyBlock();
 
+            //MC-031 : fortuneblock
+            public static Block blockFortune = new BlockFortune();
+
             @EventHandler
             public void preInit(FMLPreInitializationEvent event) {
                 boolean isClient = event.getSide().isClient();
 
+                //ここから書いていく
                 registerBlock(blockMyBlock, isClient);
+                registerBlock(blockFortune, isClient);
+
 
     }
 
