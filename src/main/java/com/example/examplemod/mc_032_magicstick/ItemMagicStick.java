@@ -59,6 +59,7 @@ public class ItemMagicStick extends ItemSword {
         }
         //セットしたやつを呼び出す
         world.spawnEntityInWorld(entity);
+        world.spawnEntityInWorld(entity);
 
         //相手を倒すコード
         target.setDead();

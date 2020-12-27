@@ -3,6 +3,7 @@ package com.example.examplemod;
 import com.example.examplemod.mc_02_myblock.MyBlock;
 import com.example.examplemod.mc_031_fortuneblock.BlockFortune;
 import com.example.examplemod.mc_032_magicstick.ItemMagicStick;
+import com.example.examplemod.mc_033_hipotion.ItemHiPotion;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.init.Blocks;
@@ -30,6 +31,9 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
             //MC-032 : magicstick
             public static Item itemMagicStick = new ItemMagicStick();
 
+            //MC-033 : hipotion
+            public  static  Item itemHiPotion = new ItemHiPotion();
+
             @EventHandler
             public void preInit(FMLPreInitializationEvent event) {
                 boolean isClient = event.getSide().isClient();
@@ -38,6 +42,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
                 registerBlock(blockMyBlock, isClient);
                 registerBlock(blockFortune, isClient);
                 registerItem(itemMagicStick,isClient);
+                registerItem(itemHiPotion,isClient);
 
 
     }
