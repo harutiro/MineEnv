@@ -5,6 +5,7 @@ import com.example.examplemod.mc_031_fortuneblock.BlockFortune;
 import com.example.examplemod.mc_032_magicstick.ItemMagicStick;
 import com.example.examplemod.mc_033_hipotion.ItemHiPotion;
 import com.example.examplemod.mc_03_mysword.ItemMySword;
+import com.example.examplemod.mc_04_rainbowblock.BlockRainbow;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.init.Blocks;
@@ -22,8 +23,9 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
             public static final String MODID = "examplemod";
             public static final String VERSION = "1.0";
 
+            /*ブロック登録の準備*/
+
             //MC-02 : myblock
-            //= new クラス名
             public static Block blockMyBlock = new MyBlock();
 
             //MC-031 : fortuneblock
@@ -38,17 +40,23 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
             //mc-03 :myItem
             public static  Item itemMySword = new ItemMySword();
 
+            //mc-04:rainboow
+            public static Block blockRainbow = new BlockRainbow();
+
 
             @EventHandler
             public void preInit(FMLPreInitializationEvent event) {
                 boolean isClient = event.getSide().isClient();
 
-                //ここから書いていく
+                //ブロックを登録する関数を呼び出している
                 registerBlock(blockMyBlock, isClient);
                 registerBlock(blockFortune, isClient);
                 registerItem(itemMagicStick,isClient);
                 registerItem(itemHiPotion,isClient);
                 registerItem(itemMySword,isClient);
+                registerBlock(blockRainbow,isClient);
+
+                registerRecipe();
 
 
     }
@@ -59,6 +67,8 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 
 
     }
+
+
 
     // ======================================================================================================
     // ここから下はいじらないよ！

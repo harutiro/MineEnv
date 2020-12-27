@@ -33,10 +33,17 @@ public class ItemMySword extends ItemSword {
         }
 //        //相手に、そのポーションの効果を与える
 //        target.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS,1200,0));
+
 //        //相手をタカイタカイする
 //        target.setPosition(target.posX,target.posY+20,target.posZ);
 
+//        //敵を燃やす
+//        target.setFire(600);
+
+
+        //場所指定
         BlockPos pos = new BlockPos(target.posX+1,target.posY+1,target.posZ);
+        //指定場所にブロックを置く
         target.worldObj.setBlockState(pos, Blocks.GLASS.getDefaultState());
 
         pos = new BlockPos(target.posX-1,target.posY+1,target.posZ);
