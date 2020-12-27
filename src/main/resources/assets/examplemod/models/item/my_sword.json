@@ -1,6 +1,6 @@
 {
   "parent": "item/handheld",
   "textures": {
-    "layer0": "examplemod:ietems/magic_stick"
+    "layer0": "examplemod:items/my_sword"
   }
 }
