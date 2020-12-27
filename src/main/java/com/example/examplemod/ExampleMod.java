@@ -9,8 +9,11 @@ import com.example.examplemod.mc_04_rainbowblock.BlockRainbow;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -56,6 +59,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
                 registerItem(itemMySword,isClient);
                 registerBlock(blockRainbow,isClient);
 
+                //レシピ追加系
                 registerRecipe();
 
 
@@ -63,9 +67,35 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 
     @EventHandler
     public void init(FMLInitializationEvent event) {
+                //木こりMOD
+                registerWoodCut();
 
 
 
+    }
+
+
+
+
+    /*クラフトレシピ追加*/
+
+    private void registerRecipe(){
+        NBTTagCompound creeperId = new NBTTagCompound();
+        creeperId.setString("id","Creeper");
+        ItemStack creeperSpawnEgg = new ItemStack(Items.SPAWN_EGG);
+        creeperSpawnEgg.setTagInfo("EntityTag",creeperId);
+
+        //クリーパー
+        GameRegistry.addRecipe(creeperSpawnEgg,
+                " A ",
+                "CBC",
+                "CBC",
+
+                'A', new ItemStack(Items.SKULL,1,4),
+                'B', new ItemStack(Blocks.TNT),
+                'C', new ItemStack(Items.GUNPOWDER)
+
+                );
     }
 
 
