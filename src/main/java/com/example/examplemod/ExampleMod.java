@@ -7,16 +7,15 @@ import com.example.examplemod.mc_033_hipotion.ItemHiPotion;
 import com.example.examplemod.mc_03_mysword.ItemMySword;
 import com.example.examplemod.mc_04_rainbowblock.BlockRainbow;
 import com.example.examplemod.mc_06_woodcut.BlockBreakEventHandler;
+import com.example.examplemod.mc_06_woodcut.DateItemH;
+import com.example.examplemod.mc_06_woodcut.DateItemR;
 import com.example.examplemod.resipi.myresipi;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
@@ -63,6 +62,10 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
             //mc-04:rainboow
             public static Block blockRainbow = new BlockRainbow().setCreativeTab(moreToolTab);
 
+            //mc-06:woodcut
+            public static Item itemDateItemH = new DateItemH().setCreativeTab(moreToolTab);
+            public static Item itemDateItemR = new DateItemR().setCreativeTab(moreToolTab);
+
 
             @EventHandler
             public void preInit(FMLPreInitializationEvent event) {
@@ -75,6 +78,8 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
                 registerItem(itemHiPotion,isClient);
                 registerItem(itemMySword,isClient);
                 registerBlock(blockRainbow,isClient);
+                registerItem(itemDateItemH,isClient);
+                registerItem(itemDateItemR,isClient);
 
                 //レシピ追加系
                 registerRecipe();

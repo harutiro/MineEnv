@@ -1,16 +1,24 @@
 package com.example.examplemod.mc_06_woodcut;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class BlockBreakEventHandler {
-    private static final int MAX_RADIUS = 3;
-    private static final int MAX_HEIGHT = 30;
+
+    //インスタンス化
+    DateItemR instansR = new DateItemR();
+    DateItemH instansH = new DateItemH();
+
 
     @SubscribeEvent
     //ブロックを壊そうとしたときにメソッドが起動する。
@@ -54,7 +62,7 @@ public class BlockBreakEventHandler {
         }
 
 
-//        breakBlock(event.getWorld(),event.getPos());
+        breakBlock(event.getWorld(),event.getPos());
 
         //現在やろうとしている処理（メソッド）をキャンセルするという処理
         //今回はブロックを壊さないようにする処理
@@ -62,10 +70,36 @@ public class BlockBreakEventHandler {
         event.setCanceled(true);
 
 
-        /*ブロックを消してItemドロップ化*/
 
 
+    }
 
+    /*ブロックを消してItemドロップ化*/
+
+    private void destroyBlock(World world,BlockPos pos){
+        IBlockState blockState = world.getBlockState(pos);
+        Block block = blockState.getBlock();
+
+        if(block != Blocks.LOG && block != Blocks.LOG2 && block != Blocks.LEAVES2 && block != Blocks.LEAVES){
+            return;
+        }
+
+        block.dropBlockAsItem(world , pos , blockState,0);
+        world.setBlockToAir(pos);
+
+        //テスト出力
+        System.out.println(instansR.Ritems);
+        System.out.println(instansH.Hitems);
+    }
+
+    private void breakBlock(World world, BlockPos pos){
+        for (int y = 0; y < instansH.Hitems;y++){
+            for(int x = -instansR.Ritems;x < instansR.Ritems+1;x++){
+                for(int z = -instansR.Ritems;z< instansR.Ritems+1;z++){
+                    destroyBlock(world, pos.add(x,y,z));
+                }
+            }
+        }
     }
 
 
