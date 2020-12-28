@@ -9,9 +9,13 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 public class myresipi {
 
     public static void kuri(){
+        //クリーパーの卵を複製して新しいものを作る
         NBTTagCompound creeperId = new NBTTagCompound();
+        //
         creeperId.setString("id","Creeper");
+        //新しく作るItemを指定する
         ItemStack creeperSpawnEgg = new ItemStack(Items.SPAWN_EGG);
+        //クリーパータグをクラフトを
         creeperSpawnEgg.setTagInfo("EntityTag",creeperId);
 
         //クリーパー

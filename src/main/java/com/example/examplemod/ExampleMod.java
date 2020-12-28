@@ -6,9 +6,8 @@ import com.example.examplemod.mc_032_magicstick.ItemMagicStick;
 import com.example.examplemod.mc_033_hipotion.ItemHiPotion;
 import com.example.examplemod.mc_03_mysword.ItemMySword;
 import com.example.examplemod.mc_04_rainbowblock.BlockRainbow;
-import com.example.examplemod.mc_06_woodcut.BlockBreakEventHandler;
-import com.example.examplemod.mc_06_woodcut.DateItemH;
-import com.example.examplemod.mc_06_woodcut.DateItemR;
+import com.example.examplemod.mc_06_woodcut.*;
+import com.example.examplemod.omosiroItem.ZyanpuBlock;
 import com.example.examplemod.resipi.myresipi;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -65,6 +64,11 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
             //mc-06:woodcut
             public static Item itemDateItemH = new DateItemH().setCreativeTab(moreToolTab);
             public static Item itemDateItemR = new DateItemR().setCreativeTab(moreToolTab);
+            public static Block BlockDateBlock = new DateBlock().setCreativeTab(moreToolTab);
+            public static Item itemKowasukun = new Kowasukun().setCreativeTab(moreToolTab);
+
+            //omosiroItems
+            public static Block itemZyanpuBlock = new ZyanpuBlock().setCreativeTab(moreToolTab);
 
 
             @EventHandler
@@ -80,6 +84,9 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
                 registerBlock(blockRainbow,isClient);
                 registerItem(itemDateItemH,isClient);
                 registerItem(itemDateItemR,isClient);
+                registerBlock(BlockDateBlock,isClient);
+                registerBlock(itemZyanpuBlock,isClient);
+                registerItem(itemKowasukun,isClient);
 
                 //レシピ追加系
                 registerRecipe();
@@ -91,11 +98,6 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
     public void init(FMLInitializationEvent event) {
                 //木こりMOD
                 registerWoodCut();
-
-
-
-
-
 
 
     }

@@ -13,21 +13,24 @@ import net.minecraft.world.World;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-public class BlockBreakEventHandler {
-
-    //インスタンス化
-    DateItemR instansR = new DateItemR();
-    DateItemH instansH = new DateItemH();
+public class BlockBreakEventHandler extends DateBlock {
+    EntityPlayer player;
 
 
     @SubscribeEvent
     //ブロックを壊そうとしたときにメソッドが起動する。
     public void onBlockBreak(BlockEvent.BreakEvent event){
 
+//        //インスタンス化
+//        DateBlock instansBlock = new DateBlock();
+
+
+
         /*何もしないゾーン（nullチェック）*/
 
         //ブロックを壊そうとしたプレイヤーが居ない時
-        EntityPlayer player = event.getPlayer();
+        player = event.getPlayer();
+
         if(player == null){
             return;
         }
@@ -57,7 +60,8 @@ public class BlockBreakEventHandler {
 
         //もし壊そうとしたブロックが木ブロックじゃなかったら
         Block clickedBlock = event.getState().getBlock();
-        if(clickedBlock != Blocks.LOG && clickedBlock != Blocks.LOG2){
+        if(clickedBlock != DateBlock.Block){
+            System.out.println("判定のところ"+ DateBlock.Block);
             return;
         }
 
@@ -80,26 +84,105 @@ public class BlockBreakEventHandler {
         IBlockState blockState = world.getBlockState(pos);
         Block block = blockState.getBlock();
 
-        if(block != Blocks.LOG && block != Blocks.LOG2 && block != Blocks.LEAVES2 && block != Blocks.LEAVES){
+//        DateBlock instansBlock = new DateBlock();
+
+        //そのBlock出ないときに何もしないで返す。
+        if(block != DateBlock.Block){
+            System.out.println("壊すところ" + DateBlock.Block);
             return;
         }
 
         block.dropBlockAsItem(world , pos , blockState,0);
         world.setBlockToAir(pos);
 
-        //テスト出力
-        System.out.println(instansR.Ritems);
-        System.out.println(instansH.Hitems);
+
     }
 
     private void breakBlock(World world, BlockPos pos){
-        for (int y = 0; y < instansH.Hitems;y++){
-            for(int x = -instansR.Ritems;x < instansR.Ritems+1;x++){
-                for(int z = -instansR.Ritems;z< instansR.Ritems+1;z++){
-                    destroyBlock(world, pos.add(x,y,z));
+        //インスタンス化
+        DateItemH instansH = new DateItemH();
+        DateItemR instansR = new DateItemR();
+
+        Kowasukun instanskowasu = new Kowasukun();
+
+        //テスト出力
+        System.out.println(instansR.Ritems);
+        System.out.println(instansH.Hitems);
+
+        if(instansR.Ritems == 0 && instansH.Hitems == 1 || instanskowasu.kowasu){
+            destroyBlock(world, pos.add(0,0,0));
+            return;
+        }
+
+        if(player.posY+1 < pos.getY() ){
+
+            //上を見たときに動くコード
+
+            for (int y = 0; y < instansH.Hitems;y++){
+                for(int x = -instansR.Ritems;x < instansR.Ritems+1;x++){
+                    for(int z = -instansR.Ritems;z< instansR.Ritems+1;z++){
+                        destroyBlock(world, pos.add(x,y,z));
+                    }
                 }
             }
+            return;
+
+
+
+
+        }else if(player.posY < pos.getY()){
+            //X軸Y軸的に切り替わるやつ
+            if(player.posX+2 < pos.getX() || pos.getX()<player.posX-2){
+                //X軸側にいる時
+                for (int y = 0; y < instansH.Hitems;y++){
+                    for(int x = -instansR.Ritems;x < instansR.Ritems+1;x++){
+                        for(int z = -instansR.Ritems;z< instansR.Ritems+1;z++){
+                            int posx = y;
+                            int posy = x;
+                            int posz = z;
+
+
+
+                            destroyBlock(world, pos.add(posx,posy,posz));
+                        }
+                    }
+                }
+                return;
+
+            }else{
+                //Y軸側にいる時
+                for (int y = 0; y < instansH.Hitems;y++){
+                    for(int x = -instansR.Ritems;x < instansR.Ritems+1;x++){
+                        for(int z = -instansR.Ritems;z< instansR.Ritems+1;z++){
+                            int posx = z;
+                            int posy = x;
+                            int posz = y;
+
+
+
+                            destroyBlock(world, pos.add(posx,posy,posz));
+                        }
+                    }
+                }
+                return;
+
+            }
+
+
+        }else{
+            //下を見ている時
+            for (int y = 0; y > -instansH.Hitems;y--){
+                for(int x = -instansR.Ritems;x < instansR.Ritems+1;x++){
+                    for(int z = -instansR.Ritems;z< instansR.Ritems+1;z++){
+                        destroyBlock(world, pos.add(x,y,z));
+                    }
+                }
+            }
+            return;
         }
+
+
+
     }
 
 

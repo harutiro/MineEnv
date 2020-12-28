@@ -13,6 +13,7 @@ import net.minecraft.world.World;
 
 public class BlockRainbow extends Block {
 
+    //プロパティインテジャー
     private static final PropertyInteger COLOR = PropertyInteger.create("color",0,6);
 
     public BlockRainbow(){
