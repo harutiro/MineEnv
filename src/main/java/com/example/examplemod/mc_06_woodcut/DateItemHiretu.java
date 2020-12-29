@@ -10,43 +10,72 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.World;
 
-public class DateItemR extends Item {
-    static int Ritems = 1;
+public class DateItemHiretu extends Item {
+    //高さ指定
+    static int hairetu = 1;
+    //何回呼び出されたか
     static int select = 0;
 
-    public DateItemR(){
+    public DateItemHiretu(){
         super();
         setCreativeTab(CreativeTabs.FOOD);
-        setRegistryName("dateItemR");
-        setUnlocalizedName(ExampleMod.MODID + "_date_itemR");
+        setRegistryName("dateItemHiretu");
+        setUnlocalizedName(ExampleMod.MODID + "_date_itemHiretu");
     }
 
-    /*DateItemRの個数による範囲指定*/
+    /*DateItemHの個数による範囲指定*/
     @Override
     //右クリックをした時
     public ActionResult<ItemStack> onItemRightClick(ItemStack stack, World world, EntityPlayer player, EnumHand hand){
-//        //Itemの量を代入
-//        Ritems = stack.stackSize;
-        //Item量を出力
+//        //Itemの個数を代入
+//        Hitems = stack.stackSize;
+
+        DateBlock instansDateBlock = new DateBlock();
+
+
+
+
+
         select += 1;
         //呼び出された回数が二回目なら
         if(select == 2) {
             //高さを一つ大きくする
-            Ritems++;
+            hairetu++;
             //出力
-            player.addChatComponentMessage(new TextComponentString("半径:" + Ritems));
+            player.addChatComponentMessage(new TextComponentString("番号指定:" + hairetu + "["+ instansDateBlock.kowasuBlock[hairetu]+"]"));
             //テスト出力
-            System.out.println(Ritems);
+            System.out.println(hairetu);
 
             //十以上なら初期化
-            if (Ritems >= 10) {
-                Ritems = -1;
+            if (hairetu >= 10) {
+                hairetu = 0;
             }
             select = 0;
         }
+
+
+
+
+
 
         return super.onItemRightClick(stack,world,player,hand);
 
     }
 
+
+
+
+
+
+
+
+//
+//    private int num = 0;
+//
+//    public void SetNum(int _num){num = _num;}
+//
+//    public int GetNum() {return num;}
+//
+//    SetNum(1);
+//    GetNum()
 }

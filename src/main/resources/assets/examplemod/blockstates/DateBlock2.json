@@ -1,0 +1,23 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "textures": {
+      "particle": "examplemod:blocks/DateBlock2_sonota",
+      "down": "examplemod:blocks/DateBlock2_sonota",
+      "up": "examplemod:blocks/DateBlock2_sonota",
+      "east": "examplemod:blocks/DateBlock2_sonota",
+      "west": "examplemod:blocks/DateBlock2_sonota",
+      "north": "examplemod:blocks/DateBlock2_omote",
+      "south": "examplemod:blocks/DateBlock2_sonota"
+    },
+    "model": "cube_all"
+  },
+  "variants": {
+    "normal": [
+      {}
+    ],
+    "inventory": [
+      {}
+    ]
+  }
+}

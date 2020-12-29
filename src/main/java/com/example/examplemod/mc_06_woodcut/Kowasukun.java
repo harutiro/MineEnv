@@ -36,11 +36,29 @@ public class Kowasukun extends ItemPickaxe {
 
             if(kowasu){
                 kowasu = false;
+
+                DateBlock instansDateBlock = new DateBlock();
+                DateItemH instansDateItemH = new DateItemH();
+                DateItemR instansDateItemR = new DateItemR();
+                DateItemHiretu instansDateItemHiretu = new DateItemHiretu();
+                Kowasukun instansKowasukun = new Kowasukun();
+                DateBlock2 instansDetaBlock2 = new DateBlock2();
+
+                player.addChatMessage(new TextComponentString( "========================================================="));
+                player.addChatMessage(new TextComponentString( "ツール："+instansDetaBlock2.Item));
+                player.addChatMessage(new TextComponentString( "選択："+instansDateItemHiretu.hairetu));
+                player.addChatMessage(new TextComponentString( "ブロック："+instansDateBlock.kowasuBlock[instansDateItemHiretu.hairetu]));
+                player.addChatMessage(new TextComponentString( "高さ："+instansDateItemH.Hitems));
+                player.addChatMessage(new TextComponentString( "半径："+instansDateItemR.Ritems));
+                player.addChatMessage(new TextComponentString( "壊すかどうか："+ Kowasukun.kowasu));
+                player.addChatMessage(new TextComponentString( "========================================================="));
+
+
             }else{
                 kowasu = true;
             }
             //出力
-            player.addChatComponentMessage(new TextComponentString("動作:" + kowasu));
+            player.addChatComponentMessage(new TextComponentString("ロック:" + kowasu));
             select = 0;
         }
 

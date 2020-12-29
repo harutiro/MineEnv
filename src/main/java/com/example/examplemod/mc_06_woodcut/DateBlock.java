@@ -14,7 +14,11 @@ import net.minecraft.world.World;
 
 public class DateBlock extends Block{
 
-    static Block Block = Blocks.LOG;
+//    public static Block Block = Blocks.LOG;
+
+    //Block保存配列
+    public static Block kowasuBlock[] = new Block[11];
+
     public DateBlock (){
 
         //素材の種類を決める
@@ -33,15 +37,18 @@ public class DateBlock extends Block{
     public void onBlockClicked(World world, BlockPos pos, EntityPlayer player){
         super.onBlockClicked(world, pos, player);
 
+        //インスタンス
+        DateItemHiretu instansHairetu = new DateItemHiretu();
+
         //Blockの座標を受け取る
         BlockPos posNado = new BlockPos(pos.getX(),pos.getY()+1,pos.getZ());
         //受け取ったPOSの座標のBlockステータスを受け取る
         IBlockState blockState = world.getBlockState(posNado);
         //Blockの種類を受け取る
-        Block = blockState.getBlock();
+        kowasuBlock[instansHairetu.hairetu] = blockState.getBlock();
 
         //出力
-        player.addChatComponentMessage(new TextComponentString( Block + "を保存しました"));
+        player.addChatComponentMessage(new TextComponentString(  instansHairetu.hairetu+"番で"+ kowasuBlock[instansHairetu.hairetu] + "を保存しました"));
 
 
     }

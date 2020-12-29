@@ -66,6 +66,8 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
             public static Item itemDateItemR = new DateItemR().setCreativeTab(moreToolTab);
             public static Block BlockDateBlock = new DateBlock().setCreativeTab(moreToolTab);
             public static Item itemKowasukun = new Kowasukun().setCreativeTab(moreToolTab);
+            public static Block BlockDateBlock2 = new DateBlock2().setCreativeTab(moreToolTab);
+            public static Item itemDateItemHairetu = new DateItemHiretu().setCreativeTab(moreToolTab);
 
             //omosiroItems
             public static Block itemZyanpuBlock = new ZyanpuBlock().setCreativeTab(moreToolTab);
@@ -87,6 +89,8 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
                 registerBlock(BlockDateBlock,isClient);
                 registerBlock(itemZyanpuBlock,isClient);
                 registerItem(itemKowasukun,isClient);
+                registerBlock(BlockDateBlock2,isClient);
+                registerItem(itemDateItemHairetu,isClient);
 
                 //レシピ追加系
                 registerRecipe();

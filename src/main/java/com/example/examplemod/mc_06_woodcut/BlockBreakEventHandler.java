@@ -14,7 +14,10 @@ import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class BlockBreakEventHandler extends DateBlock {
+
     EntityPlayer player;
+
+
 
 
     @SubscribeEvent
@@ -22,7 +25,8 @@ public class BlockBreakEventHandler extends DateBlock {
     public void onBlockBreak(BlockEvent.BreakEvent event){
 
         //インスタンス化
-        Item instanskowasu = new Kowasukun();
+        Block instansDateBlock2 = new DateBlock2();
+        DateItemHiretu instansHairetu = new DateItemHiretu();
 
 
 
@@ -42,8 +46,8 @@ public class BlockBreakEventHandler extends DateBlock {
 
         //斧のどれかではない時
         Item item = player.getHeldItemMainhand().getItem();
-        if( item != instanskowasu){
-            System.out.println(instanskowasu);
+        if( item != ((DateBlock2) instansDateBlock2).Item){
+            System.out.println(((DateBlock2) instansDateBlock2).Item);
             System.out.println(item);
 
             return;
@@ -58,8 +62,8 @@ public class BlockBreakEventHandler extends DateBlock {
 
         //もし壊そうとしたブロックが木ブロックじゃなかったら
         Block clickedBlock = event.getState().getBlock();
-        if(clickedBlock != DateBlock.Block){
-            System.out.println("判定のところ"+ DateBlock.Block);
+        if(clickedBlock != DateBlock.kowasuBlock[instansHairetu.hairetu]){
+            System.out.println("判定のところ"+ DateBlock.kowasuBlock[instansHairetu.hairetu]);
             return;
         }
 
@@ -84,9 +88,11 @@ public class BlockBreakEventHandler extends DateBlock {
 
 //        DateBlock instansBlock = new DateBlock();
 
+        DateItemHiretu instansHairetu = new DateItemHiretu();
+
         //そのBlock出ないときに何もしないで返す。
-        if(block != DateBlock.Block){
-            System.out.println("壊すところ" + DateBlock.Block);
+        if(block != DateBlock.kowasuBlock[instansHairetu.hairetu]){
+            System.out.println("壊すところ" + DateBlock.kowasuBlock[instansHairetu.hairetu]);
             return;
         }
 
