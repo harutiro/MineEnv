@@ -33,9 +33,11 @@ public class DateBlock extends Block{
     public void onBlockClicked(World world, BlockPos pos, EntityPlayer player){
         super.onBlockClicked(world, pos, player);
 
+        //Blockの座標を受け取る
         BlockPos posNado = new BlockPos(pos.getX(),pos.getY()+1,pos.getZ());
-
+        //受け取ったPOSの座標のBlockステータスを受け取る
         IBlockState blockState = world.getBlockState(posNado);
+        //Blockの種類を受け取る
         Block = blockState.getBlock();
 
         //出力

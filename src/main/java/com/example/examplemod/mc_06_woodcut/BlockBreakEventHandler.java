@@ -44,6 +44,7 @@ public class BlockBreakEventHandler extends DateBlock {
         Item item = player.getHeldItemMainhand().getItem();
         if( item != instanskowasu){
             System.out.println(instanskowasu);
+            System.out.println(item);
 
             return;
         }
