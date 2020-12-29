@@ -21,8 +21,8 @@ public class BlockBreakEventHandler extends DateBlock {
     //ブロックを壊そうとしたときにメソッドが起動する。
     public void onBlockBreak(BlockEvent.BreakEvent event){
 
-//        //インスタンス化
-//        DateBlock instansBlock = new DateBlock();
+        //インスタンス化
+        Item instanskowasu = new Kowasukun();
 
 
 
@@ -42,11 +42,8 @@ public class BlockBreakEventHandler extends DateBlock {
 
         //斧のどれかではない時
         Item item = player.getHeldItemMainhand().getItem();
-        if( item != Items.WOODEN_AXE &&
-            item != Items.STONE_AXE &&
-            item != Items.IRON_AXE &&
-            item != Items.GOLDEN_AXE &&
-            item != Items.DIAMOND_AXE){
+        if( item != instanskowasu){
+            System.out.println(instanskowasu);
 
             return;
         }
