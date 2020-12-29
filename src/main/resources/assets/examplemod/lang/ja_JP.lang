@@ -1,6 +1,13 @@
 # Language file (ja_JP)
 tile.examplemod_myblock.name=ブロック
 
+tile.examplemod_DateBlock.name=ブロック保存ブロック
+tile.examplemod_DateBlock2.name=ツール保存ブロック
+item.examplemod_date_itemH.name=高さ指定アイテム
+item.examplemod_date_itemHiretu.name=番号指定アイテム
+item.examplemod_date_itemR.name=半径指定アイテム
+item.examplemod_kowasukun.name=こわすくん
 
+tile.examplemod_zyanpu_block.name=高い他界ブロック
 
 itemGroup.moreToolTab=便利ツールたち
